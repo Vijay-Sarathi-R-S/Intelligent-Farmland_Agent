@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_file  # Make sure send_file is here
 from flask_cors import CORS
 import uuid
 from datetime import datetime
@@ -6,6 +6,9 @@ from config import Config
 from services.satellite import SatelliteService
 from services.weather import WeatherService
 from services.analyzer import AnalyzerService
+from services.report_generator import ReportGenerator
+
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -15,10 +18,12 @@ CORS(app)
 satellite = SatelliteService()
 weather = WeatherService()
 analyzer = AnalyzerService()
+report_generator = ReportGenerator()
 
 # In-memory database
 fields_db = {}
 analyses_db = {}
+
 
 @app.route('/')
 def index():
@@ -99,6 +104,51 @@ def analyze_field(field_id):
             'error': str(e)
         }), 500
 
+@app.route('/api/fields/<field_id>/report/pdf', methods=['GET'])
+def download_pdf_report(field_id):
+    """Generate and download PDF report"""
+    try:
+        field = fields_db.get(field_id)
+        if not field:
+            return jsonify({'success': False, 'error': 'Field not found'}), 404
+        
+        # Get latest analysis
+        field_analyses = [a for a in analyses_db.values() if a.get('field_id') == field_id]
+        if not field_analyses:
+            return jsonify({'success': False, 'error': 'No analysis found for this field. Please run analysis first.'}), 404
+        
+        latest_analysis = field_analyses[-1]
+        
+        try:
+            # Generate PDF report
+            pdf_buffer = report_generator.generate_report(field, latest_analysis)
+            
+            # Create filename
+            filename = f"verdex_report_{field['name']}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+            filename = filename.replace(' ', '_').lower()
+            
+            # Send file
+            return send_file(
+                pdf_buffer,
+                as_attachment=True,
+                download_name=filename,
+                mimetype='application/pdf'
+            )
+            
+        except Exception as e:
+            # Log the error for debugging
+            print(f"PDF Generation Error: {str(e)}")
+            return jsonify({
+                'success': False, 
+                'error': f'PDF generation failed: {str(e)}'
+            }), 500
+            
+    except Exception as e:
+        print(f"Unexpected error in PDF endpoint: {str(e)}")
+        return jsonify({
+            'success': False,
+            'error': 'An unexpected error occurred'
+        }), 500
 @app.route('/api/fields/<field_id>/report', methods=['GET'])
 def generate_report(field_id):
     field = fields_db.get(field_id)
