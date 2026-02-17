@@ -1,16 +1,17 @@
-from flask import Flask, render_template, request, jsonify, send_file  # Make sure send_file is here
+from flask import Flask, render_template, request, jsonify, send_file, redirect, url_for, session
 from flask_cors import CORS
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 from config import Config
 from services.satellite import SatelliteService
 from services.weather import WeatherService
 from services.analyzer import AnalyzerService
 from services.report_generator import ReportGenerator
-
+from functools import wraps
 
 app = Flask(__name__)
 app.config.from_object(Config)
+app.secret_key = 'your-secret-key-here-change-in-production'  # Add secret key for sessions
 CORS(app)
 
 # Initialize services
@@ -22,13 +23,74 @@ report_generator = ReportGenerator()
 # In-memory database
 fields_db = {}
 analyses_db = {}
+users_db = {
+    'admin': {
+        'password': 'admin123',  # In production, use hashed passwords
+        'name': 'Farm Manager'
+    }
+}
 
+# Login required decorator
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user' not in session:
+            return redirect(url_for('login_page'))
+        return f(*args, **kwargs)
+    return decorated_function
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def root():
+    if 'user' in session:
+        return redirect(url_for('index'))
+    return redirect(url_for('splash'))
 
+@app.route('/splash')
+def splash():
+    return render_template('splash.html')
+
+@app.route('/login')
+def login_page():
+    if 'user' in session:
+        return redirect(url_for('index'))
+    return render_template('login.html')
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+    
+    if username in users_db and users_db[username]['password'] == password:
+        session['user'] = {
+            'username': username,
+            'name': users_db[username]['name'],
+            'login_time': datetime.now().isoformat()
+        }
+        return jsonify({
+            'success': True,
+            'message': 'Login successful',
+            'user': session['user']
+        })
+    
+    return jsonify({
+        'success': False,
+        'message': 'Invalid credentials'
+    }), 401
+
+@app.route('/api/logout', methods=['POST'])
+def logout():
+    session.pop('user', None)
+    return jsonify({'success': True})
+
+@app.route('/index')
+@login_required
+def index():
+    return render_template('index.html', user=session.get('user'))
+
+# Protect existing routes with login_required
 @app.route('/api/fields', methods=['GET'])
+@login_required
 def get_fields():
     return jsonify({
         'success': True,
@@ -36,6 +98,7 @@ def get_fields():
     })
 
 @app.route('/api/fields', methods=['POST'])
+@login_required
 def create_field():
     data = request.json
     
@@ -46,7 +109,8 @@ def create_field():
         'longitude': float(data['longitude']),
         'acres': float(data['acres']),
         'crop_type': data.get('crop_type', 'Unknown'),
-        'created_at': datetime.now().isoformat()
+        'created_at': datetime.now().isoformat(),
+        'created_by': session['user']['username']
     }
     
     fields_db[field['id']] = field
@@ -57,6 +121,7 @@ def create_field():
     })
 
 @app.route('/api/fields/<field_id>/analyze', methods=['POST'])
+@login_required
 def analyze_field(field_id):
     field = fields_db.get(field_id)
     if not field:
@@ -87,6 +152,7 @@ def analyze_field(field_id):
         analysis['timestamp'] = datetime.now().isoformat()
         analysis['vegetation_data'] = veg_data
         analysis['weather_data'] = weather_risks
+        analysis['analyzed_by'] = session['user']['username']
         
         # Store analysis
         analysis_id = str(uuid.uuid4())
@@ -104,6 +170,7 @@ def analyze_field(field_id):
         }), 500
 
 @app.route('/api/fields/<field_id>/report/pdf', methods=['GET'])
+@login_required
 def download_pdf_report(field_id):
     """Generate and download PDF report"""
     try:
@@ -148,7 +215,9 @@ def download_pdf_report(field_id):
             'success': False,
             'error': 'An unexpected error occurred'
         }), 500
+
 @app.route('/api/fields/<field_id>/report', methods=['GET'])
+@login_required
 def generate_report(field_id):
     field = fields_db.get(field_id)
     if not field:
@@ -170,11 +239,24 @@ def generate_report(field_id):
     })
 
 @app.route('/api/fields/<field_id>', methods=['DELETE'])
+@login_required
 def delete_field(field_id):
     if field_id in fields_db:
         del fields_db[field_id]
         return jsonify({'success': True})
     return jsonify({'success': False, 'error': 'Field not found'}), 404
+
+@app.route('/api/user/session', methods=['GET'])
+@login_required
+def get_session():
+    return jsonify({
+        'success': True,
+        'user': session.get('user')
+    })
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     # Add sample data
@@ -185,7 +267,8 @@ if __name__ == '__main__':
         'longitude': -93.6200,
         'acres': 150,
         'crop_type': 'Corn',
-        'created_at': datetime.now().isoformat()
+        'created_at': datetime.now().isoformat(),
+        'created_by': 'admin'
     }
     fields_db[sample_field['id']] = sample_field
     
