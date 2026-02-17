@@ -1,5 +1,17 @@
 # Intelligent Farmland Agent (Verdex)
 
+Description: Asset Intelligence for Farmland
+
+Detail: Verdex uses satellite imagery and weather data to create a persistent, time-anchored record of what happens on every acre. This turns land into a measurable asset whose outcomes can be audited objectively at scale. Verdex is built to replace manual field inspections in insurance verification and risk management.
+
+Industry: Industrials
+
+Type: Agriculture
+
+Challenge (What you have to do?): How can we use satellite imagery and weather data to create a reliable, auditable record of land activity and risk, enabling scalable and objective insurance verification?
+
+Company Link: https://www.verdexai.com/
+
 **Verdex - Farmland Intelligence** is an AI-powered web application that provides real-time analysis and insights for agricultural farmland using satellite imagery, weather data, and machine learning.
 
 ## 🎯 Overview
