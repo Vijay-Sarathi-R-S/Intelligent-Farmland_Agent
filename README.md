@@ -8,9 +8,9 @@
 
 Asset intelligence for farmland — combining satellite imagery, weather data, and AI to build auditable, time-anchored records of field activity and risk.
 
-Company: https://www.verdex.com/
-
 **AgriTech - Farmland Intelligence** is an AI-powered web application that provides vegetation analysis (NDVI), weather-driven risk metrics, and automated reports to support risk management, insurance verification, and precision agriculture.
+
+Created with support from [Verdex](https://www.verdex.com/)
 
 ---
 
