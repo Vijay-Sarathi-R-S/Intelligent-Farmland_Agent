@@ -64,13 +64,17 @@ Intelligent-Farmland_Agent/
    source venv/bin/activate  # On macOS/Linux
    ```
 
+> `python.exe -m pip install --upgrade pip`
+
 3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
 4. **Configure environment variables**
-   - Copy `.env.example` to `.env`
+```
+cp .env.example .env
+```
    - Add your API keys:
      ```
      GEMINI_API_KEY=your-gemini-api-key
