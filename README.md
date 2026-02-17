@@ -70,7 +70,7 @@ Intelligent-Farmland_Agent/
    ```
 
 4. **Configure environment variables**
-   - Copy `.env.example` to `.env`
+   - `cp .env.example .env`
    - Add your API keys:
      ```
      GEMINI_API_KEY=your-gemini-api-key

@@ -7,7 +7,7 @@ class AnalyzerService:
     def __init__(self):
         try:
             genai.configure(api_key=Config.GEMINI_API_KEY)
-            self.model = genai.GenerativeModel('gemini-pro')
+            self.model = genai.GenerativeModel('gemini-2.5-flash')
             self.ai_available = True
             print("🤖 Gemini AI Initialized")
         except Exception as e:
