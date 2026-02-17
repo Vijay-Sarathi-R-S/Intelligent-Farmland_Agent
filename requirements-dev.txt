@@ -1,5 +1,21 @@
-pytest
-pytest-mock
-requests-mock
-coverage
-gunicorn
+# ----------------------------
+# Testing
+# ----------------------------
+pytest==7.4.4
+pytest-mock==3.12.0
+requests-mock==1.11.0
+coverage==7.4.4
+
+# ----------------------------
+# Production server (for staging / docker)
+# ----------------------------
+gunicorn==21.2.0
+
+# ----------------------------
+# Code quality & formatting
+# ----------------------------
+pre-commit==3.6.2
+black==24.2.0
+flake8==7.0.0
+mypy==1.10.0
+isort==5.13.2
