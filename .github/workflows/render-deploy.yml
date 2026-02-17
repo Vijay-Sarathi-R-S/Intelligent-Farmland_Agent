@@ -1,0 +1,22 @@
+name: Manual Deploy to Render
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Render via API
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+        run: |
+          echo "Triggering Render deployment..."
+          curl -X POST https://api.render.com/deploy/srv/$SERVICE_ID \
+            -H "Accept: application/json" \
+            -H "Authorization: Bearer $RENDER_API_KEY"

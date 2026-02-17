@@ -16,3 +16,6 @@ services:
     volumes:
       - ./:/app
     command: flask run --host=0.0.0.0 --port=5000
+    
+    # Uncomment to test with Render production config (single worker)
+    # command: gunicorn run:app -b 0.0.0.0:5000 --workers 1 --timeout 60 --access-logfile - --error-logfile -
