@@ -43,7 +43,7 @@ Intelligent-Farmland_Agent/
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.8+ (Recommended: 3.12.8)
 - pip package manager
 - API Keys for:
   - Google Gemini API
