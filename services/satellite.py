@@ -192,3 +192,5 @@ class SatelliteService:
         elif ndvi > 0.4: return "Good"
         elif ndvi > 0.2: return "Fair"
         else: return "Poor"
+
+#############################################################################################
