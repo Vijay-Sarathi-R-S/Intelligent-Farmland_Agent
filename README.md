@@ -5,12 +5,14 @@
 ![Python](https://img.shields.io/badge/python-3.8%2B-3776AB)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Hackathon](https://img.shields.io/badge/hackathon-2026-orange)
+[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen)](https://agri-ofx9.onrender.com/)
+
+**Live demo**: https://agri-ofx9.onrender.com/
 
 Asset intelligence for farmland — combining satellite imagery, weather data, and AI to build auditable, time-anchored records of field activity and risk.
 
 **AgriTech - Farmland Intelligence** is an AI-powered web application that provides vegetation analysis (NDVI), weather-driven risk metrics, and automated reports to support risk management, insurance verification, and precision agriculture.
 
-Created with support from [Verdex](https://www.verdex.com/)
 
 ---
 
@@ -25,6 +27,7 @@ Created with support from [Verdex](https://www.verdex.com/)
 - [AI Integration](#ai-integration)
 - [Dependencies](#dependencies)
 - [Testing](#testing)
+- [Live demo](#live-demo)
 - [Contributing](#contributing)
 - [License](#license)
 - [Troubleshooting & Support](#troubleshooting--support)
@@ -79,7 +82,7 @@ copy .env.example .env
 python app.py
 ```
 
-5. Open http://localhost:5000
+5. 5. Open http://localhost:5000 — or visit the deployed demo at `https://agri-ofx9.onrender.com/`
 
 ---
 
@@ -164,6 +167,16 @@ Or run the provided test runner:
 ```powershell
 python test.py
 ```
+
+---
+
+## Live demo
+
+A deployed version of this app is available at:
+
+https://agri-ofx9.onrender.com/
+
+You can use the live demo to quickly explore the UI without running locally. (Keep in mind the live demo may run with demo data and rate limits.)
 
 ---
 
