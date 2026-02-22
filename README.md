@@ -2,40 +2,25 @@
 
 <div align="center">
 
-<!-- CI / GitHub Actions -->
 [![Build Status](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/actions/workflows/ci.yml/badge.svg)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/actions)
-
-<!-- Code coverage -->
 [![codecov](https://codecov.io/gh/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/branch/main/graph/badge.svg)](https://codecov.io/gh/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)
 ![coverage](https://img.shields.io/badge/coverage-unknown-yellow)
-
-<!-- Language / Framework -->
 ![Python](https://img.shields.io/badge/python-3.8%2B-3776AB)
 ![Flask](https://img.shields.io/badge/Flask-2.x-black?logo=flask)
 ![AI: Google Gemini](https://img.shields.io/badge/AI-Google%20Gemini-blue)
-
-<!-- License / Event / Demo -->
 ![License](https://img.shields.io/badge/License-Creative%20Commons%20Legal%20Code-green)
 ![Hackathon](https://img.shields.io/badge/hackathon-2026-orange)
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen)](https://agri-ofx9.onrender.com/)
-
-<!-- Repo metadata -->
 [![Last Commit](https://img.shields.io/github/last-commit/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/commits)
 ![Repo Size](https://img.shields.io/github/repo-size/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)
 [![Contributors](https://img.shields.io/github/contributors/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/graphs/contributors)
 [![Open PRs](https://img.shields.io/github/issues-pr/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/pulls)
-
-<!-- GitHub social -->
 [![Issues](https://img.shields.io/github/issues/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/issues)
 [![Stars](https://img.shields.io/github/stars/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent?style=social)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/stargazers)
 [![Forks](https://img.shields.io/github/forks/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent?style=social)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/network/members)
-
-<!-- Package / Docker -->
 [![PyPI](https://img.shields.io/pypi/v/your-package-name)](https://pypi.org/project/your-package-name/) <!-- replace your-package-name -->
 [![Docker Pulls](https://img.shields.io/docker/pulls/YOUR_DOCKER_USERNAME/your-image)](https://hub.docker.com/r/YOUR_DOCKER_USERNAME/your-image) <!-- replace placeholders -->
 ![Docker](https://img.shields.io/badge/docker-ready-blue)
-
-<!-- Dependencies / Security -->
 ![Dependencies](https://img.shields.io/librariesio/release/github/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)
 [![Known Vulnerabilities](https://snyk.io/test/github/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/badge.svg)](https://snyk.io/test/github/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)
 
