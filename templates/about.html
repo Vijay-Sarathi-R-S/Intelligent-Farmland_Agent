@@ -113,9 +113,9 @@
         .container {
             position: relative;
             z-index: 10;
-            max-width: 1200px;
+            max-width: 1400px;  /* more breathing space */
             margin: 0 auto;
-            padding: 8rem 2rem 4rem;
+            padding: 8rem 4rem 4rem; /* increase side padding */
         }
 
         /* Hero Section */
@@ -621,6 +621,80 @@
             box-shadow: 0 20px 40px rgba(74, 222, 128, 0.6);
         }
 
+        /* Team Section 2x2 Layout */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .team-grid .feature-card {
+            padding: 3rem 2rem;
+        }
+
+
+
+        /* Team Subtitle */
+        .team-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        /* Team Image Avatar */
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            min-width: 100px;
+            min-height: 100px;
+
+            border-radius: 50%;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+
+            border: 3px solid rgba(74, 222, 128, 0.5);
+            box-shadow: 0 15px 35px rgba(74, 222, 128, 0.3);
+
+            display: block;
+            margin: 0 auto;
+        }
+
+        .team-grid .feature-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hover Effect */
+        .feature-card:hover .team-avatar {
+            transform: scale(1.08);
+            box-shadow: 0 15px 35px rgba(74, 222, 128, 0.35);
+        }
+
+        /* Initial Placeholder Avatar */
+        .team-avatar-placeholder {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #0a2e1f;
+            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover .team-avatar-placeholder {
+            transform: scale(1.08);
+            box-shadow: 0 15px 35px rgba(74, 222, 128, 0.4);
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -669,6 +743,12 @@
             }
             
             .report-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1022,32 +1102,49 @@
 
         <!-- Team Section -->
         <section class="features-section">
-            <h2>👥 Our Team</h2>
-            <p style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">Built by Team <strong>FuTech</strong> for the AgentX Hackathon 2026</p>
-            <div class="features-grid" style="grid-template-columns: repeat(4, 1fr);">
+            <h2>Our Team</h2>
+            <p class="team-subtitle">
+                Built by Team <strong>FuTech</strong> for the AgentX Hackathon 2026
+            </p>
+
+            <div class="features-grid team-grid">
+
                 <div class="feature-card" role="article" aria-label="Vijay Sarathi R.S — Team Lead and Backend Developer">
-                    <div class="feature-icon">👨‍💻</div>
+                    <div class="feature-icon">
+                        <div class="team-avatar-placeholder">VS</div>
+                    </div>
                     <h3>Vijay Sarathi R.S</h3>
-                    <p>Team Lead & Backend Developer - implemented core backend services and APIs.</p>
+                    <p>Team Lead & Backend Developer — implemented core backend services and APIs.</p>
                 </div>
 
                 <div class="feature-card" role="article" aria-label="Sanjai S — Backend Support and DevOps">
-                    <div class="feature-icon">👨‍💻</div>
+                    <div class="feature-icon">
+                        <img 
+                            src="https://adequate-copper-yt2lcfrfwb.edgeone.app/Image.jpg"
+                            alt="Sanjai S"
+                            class="team-avatar"
+                        />
+                    </div>
                     <h3>Sanjai S</h3>
-                    <p>Backend Support & DevOps - CI/CD, Docker, Render deployment, and technical documentation.</p>
+                    <p>Backend Support & DevOps — CI/CD, Docker, Render deployment, and technical documentation.</p>
                 </div>
 
                 <div class="feature-card" role="article" aria-label="Akhil T.T — Frontend Developer">
-                    <div class="feature-icon">👨‍💻</div>
+                    <div class="feature-icon">
+                        <div class="team-avatar-placeholder">AT</div>
+                    </div>
                     <h3>Akhil T.T</h3>
-                    <p>Frontend Developer - implemented UI/UX and client-side features.</p>
+                    <p>Frontend Developer — implemented UI/UX and client-side features.</p>
                 </div>
 
                 <div class="feature-card" role="article" aria-label="Sreevidhya A — AI/ML Specialist">
-                    <div class="feature-icon">👩‍💻</div>
+                    <div class="feature-icon">
+                        <div class="team-avatar-placeholder">SA</div>
+                    </div>
                     <h3>Sreevidhya A</h3>
-                    <p>AI/ML Specialist - planning, testing, and report generation.</p>
+                    <p>AI/ML Specialist — planning, testing, and report generation.</p>
                 </div>
+
             </div>
         </section>
 
