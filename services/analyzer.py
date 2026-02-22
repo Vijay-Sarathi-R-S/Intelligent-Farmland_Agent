@@ -1,28 +1,14 @@
+import google.generativeai as genai
 import json
 from datetime import datetime
 from config import Config
 from services.knowledge_base import AgriculturalKnowledgeBase
 
-# Try new google.genai package first, fall back to deprecated one
-try:
-    import google.genai as genai
-    USING_NEW_GENAI = True
-except ImportError:
-    import google.generativeai as genai
-    USING_NEW_GENAI = False
-
 class AnalyzerService:
     def __init__(self):
         try:
-            if USING_NEW_GENAI:
-                # New google.genai API
-                self.client = genai.Client(api_key=Config.GEMINI_API_KEY)
-                self.model = 'gemini-2.5-flash'
-            else:
-                # Deprecated google.generativeai API
-                genai.configure(api_key=Config.GEMINI_API_KEY)
-                self.model = genai.GenerativeModel('gemini-2.5-flash')
-            
+            genai.configure(api_key=Config.GEMINI_API_KEY)
+            self.model = genai.GenerativeModel('gemini-2.5-flash')
             self.ai_available = True
             # Initialize RAG knowledge base
             self.knowledge_base = AgriculturalKnowledgeBase()
