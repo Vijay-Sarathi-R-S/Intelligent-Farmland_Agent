@@ -230,10 +230,14 @@ File: [README.md](README.md)
 
 This project was created for the AgentX Hackathon by Team **FuTech**. Our team members:
 
-1. Vijay Sarathi R.S
-2. Sanjai S
-3. Akhil T.T
-4. Sreevidhya A
+```Table
+| Team Member | Role | Service | GitHub |
+|-------------|------|----------|--------|
+| **Vijay Sarathi R.S** | Team Lead & Backend Developer | Implemented core backend services and APIs | [GitHub](https://github.com/Vijay-Sarathi-R-S) |
+| **Sanjai S** | Backend Support & DevOps | CI/CD setup, Docker configuration, Render deployment, and technical documentation | [GitHub](#) |
+| **Akhil T.T** | Frontend Developer | Implemented UI/UX and client-side features | [GitHub](#) |
+| **Sreevidhya A** | AI/ML Specialist | Planning, testing, and report generation | [GitHub](#) |
+```
 
 Good luck and thank you for reviewing our work!
 
