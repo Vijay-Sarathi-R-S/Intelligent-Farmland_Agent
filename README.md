@@ -3,7 +3,7 @@
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![Coverage](https://img.shields.io/badge/coverage-unknown-yellow)
 ![Python](https://img.shields.io/badge/python-3.8%2B-3776AB)
-![License](https://img.shields.io/badge/license-Creative%20Commons-green)
+![License](https://img.shields.io/badge/License-Creative%20Commons%20Legal%20Code-green)
 ![Hackathon](https://img.shields.io/badge/hackathon-2026-orange)
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen)](https://agri-ofx9.onrender.com/)
 
