@@ -5,6 +5,25 @@ from PIL import Image
 import io
 from config import Config
 
+# Global satellite API access counter
+_satellite_access_count = 0
+
+def increment_satellite_count():
+    """Increment and return the satellite API access count"""
+    global _satellite_access_count
+    _satellite_access_count += 1
+    return _satellite_access_count
+
+def get_satellite_count():
+    """Get the current satellite API access count"""
+    global _satellite_access_count
+    return _satellite_access_count
+
+def reset_satellite_count():
+    """Reset the satellite API access count (for testing)"""
+    global _satellite_access_count
+    _satellite_access_count = 0
+
 class SatelliteService:
     def __init__(self):
         self.nasa_key = Config.NASA_API_KEY

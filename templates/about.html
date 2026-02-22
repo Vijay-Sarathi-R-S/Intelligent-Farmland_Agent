@@ -294,9 +294,18 @@
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: #4ade80;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .feature-card h3 {
@@ -705,7 +714,7 @@
     <div class="container">
         <!-- Hero Section -->
         <section class="hero-section">
-            <h1>🌱 About AgriTech</h1>
+            <h1>About AgriTech</h1>
             <p class="subtitle">Intelligent farmland monitoring and risk analysis platform that transforms agricultural land into a measurable, trackable, and auditable digital asset.</p>
         </section>
 
@@ -740,41 +749,41 @@
 
         <!-- Vision Section -->
         <section class="vision-section">
-            <h2>🎯 Our Vision</h2>
+            <h2>Our Vision</h2>
             <p>To build a world where every acre of farmland can be monitored, understood, and protected through data — improving productivity, reducing risk, and enabling smarter agricultural decisions.</p>
         </section>
 
         <!-- What AgriTech Does -->
         <section class="features-section">
-            <h2>🚜 What AgriTech Does</h2>
+            <h2>What AgriTech Does</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🛰️</div>
+                    <div class="feature-icon"><img src="/static/icons/satellite.svg" alt="Satellite Monitoring"></div>
                     <h3>Satellite Monitoring</h3>
                     <p>Satellite-based crop health monitoring with high-resolution imagery every 5 days</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🌤️</div>
+                    <div class="feature-icon"><img src="/static/icons/weather.svg" alt="Weather Intelligence"></div>
                     <h3>Weather Intelligence</h3>
                     <p>Environmental and weather intelligence with real-time data integration</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚠️</div>
+                    <div class="feature-icon"><img src="/static/icons/risk.svg" alt="Risk Detection"></div>
                     <h3>Risk Detection</h3>
                     <p>Risk detection and threat classification using AI-powered analysis</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon"><img src="/static/icons/analytics.svg" alt="Historical Tracking"></div>
                     <h3>Historical Tracking</h3>
                     <p>Historical land activity tracking with time-stamped observations</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📋</div>
+                    <div class="feature-icon"><img src="/static/icons/report.svg" alt="Automated Reports"></div>
                     <h3>Automated Reports</h3>
                     <p>Automated monitoring reports for analysis, planning, and verification</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
+                    <div class="feature-icon"><img src="/static/icons/ai.svg" alt="AI Recommendations"></div>
                     <h3>AI Recommendations</h3>
                     <p>AI-powered recommendations for optimal farm management</p>
                 </div>
@@ -783,7 +792,7 @@
 
         <!-- Technology Section -->
         <section class="tech-section" id="technology">
-            <h2>🛰 How Our Technology Works</h2>
+            <h2>How Our Technology Works</h2>
             <div class="tech-timeline">
                 <div class="tech-step">
                     <div class="step-number">1</div>
@@ -820,7 +829,7 @@
 
         <!-- Report Preview Section -->
         <section class="report-section">
-            <h2>📊 Sample Report</h2>
+            <h2>Sample Report</h2>
             <div class="report-preview">
                 <div class="report-header">
                     <h3>FARMLAND ASSET INSPECTION REPORT</h3>
@@ -891,20 +900,20 @@
 
         <!-- What Makes Us Unique -->
         <section class="features-section">
-            <h2>📊 What Makes AgriTech Unique</h2>
+            <h2>What Makes AgriTech Unique</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">✓</div>
+                    <div class="feature-icon"><img src="/static/icons/continuous.svg" alt="Continuous Monitoring"></div>
                     <h3>Continuous Monitoring</h3>
                     <p>Continuous satellite-based monitoring with 5-day refresh rate</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
+                    <div class="feature-icon"><img src="/static/icons/explainable.svg" alt="Explainable AI"></div>
                     <h3>Explainable AI</h3>
                     <p>Explainable risk classification with transparent decision making</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⏱️</div>
+                    <div class="feature-icon"><img src="/static/icons/timestamp.svg" alt="Time-Stamped Records"></div>
                     <h3>Time-Stamped Records</h3>
                     <p>Time-stamped historical land records for complete audit trail</p>
                 </div>
@@ -913,10 +922,10 @@
 
         <!-- Impact Section -->
         <section class="impact-section" id="impact">
-            <h2>🌍 Real-World Impact</h2>
+            <h2>Real-World Impact</h2>
             <div class="impact-grid">
                 <div class="impact-card">
-                    <div class="impact-icon">👨‍🌾</div>
+                    <div class="impact-icon"><img src="/static/icons/farmer.svg" alt="Farmers"></div>
                     <h3>Farmers</h3>
                     <ul class="impact-list">
                         <li>Detect crop stress early</li>
@@ -925,7 +934,7 @@
                     </ul>
                 </div>
                 <div class="impact-card">
-                    <div class="impact-icon">🏢</div>
+                    <div class="impact-icon"><img src="/static/icons/insurance.svg" alt="Insurance Providers"></div>
                     <h3>Insurance Providers</h3>
                     <ul class="impact-list">
                         <li>Verify claims objectively</li>
@@ -934,7 +943,7 @@
                     </ul>
                 </div>
                 <div class="impact-card">
-                    <div class="impact-icon">📈</div>
+                    <div class="impact-icon"><img src="/static/icons/planner.svg" alt="Agricultural Planners"></div>
                     <h3>Agricultural Planners</h3>
                     <ul class="impact-list">
                         <li>Analyze productivity trends</li>
@@ -947,31 +956,99 @@
 
         <!-- Our Approach -->
         <section class="features-section">
-            <h2>🔬 Our Approach</h2>
+            <h2>Our Approach</h2>
             <div class="features-grid" style="grid-template-columns: repeat(4, 1fr);">
                 <div class="feature-card">
-                    <div class="feature-icon">📏</div>
+                    <div class="feature-icon"><img src="/static/icons/measurable.svg" alt="Measurable"></div>
                     <h3>Measurable</h3>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
+                    <div class="feature-icon"><img src="/static/icons/transparent.svg" alt="Transparent"></div>
                     <h3>Transparent</h3>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔮</div>
+                    <div class="feature-icon"><img src="/static/icons/predictive.svg" alt="Predictive"></div>
                     <h3>Predictive</h3>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon"><img src="/static/icons/datadriven.svg" alt="Data-Driven"></div>
                     <h3>Data-Driven</h3>
                 </div>
             </div>
         </section>
 
-        <!-- Future Section -->
+        <!-- Use Cases Section -->
+        <section class="features-section">
+            <h2>Use Cases</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><img src="/static/icons/crop.svg" alt="Crop Health Monitoring"></div>
+                    <h3>Crop Health Monitoring</h3>
+                    <p>Real-time vegetation analysis and stress detection for optimal farm management</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><img src="/static/icons/yield.svg" alt="Yield Prediction"></div>
+                    <h3>Yield Prediction</h3>
+                    <p>AI-driven forecasting to predict crop yields and plan harvesting strategies</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><img src="/static/icons/evidence.svg" alt="Insurance Claim Evidence"></div>
+                    <h3>Insurance Claim Evidence</h3>
+                    <p>Objective, time-stamped satellite data for insurance verification and claims</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><img src="/static/icons/regulatory.svg" alt="Regulatory Reporting"></div>
+                    <h3>Regulatory Reporting</h3>
+                    <p>Auditable records and automated reports for compliance and stakeholder reporting</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><img src="/static/icons/risk.svg" alt="Risk Management"></div>
+                    <h3>Risk Management</h3>
+                    <p>Early detection of environmental threats and anomalies for proactive intervention</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><img src="/static/icons/target.svg" alt="Precision Agriculture"></div>
+                    <h3>Precision Agriculture</h3>
+                    <p>Data-driven insights for optimized resource allocation and sustainable farming</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Capabilities Section -->
         <section class="vision-section" style="background: linear-gradient(135deg, rgba(74, 222, 128, 0.15), rgba(34, 197, 94, 0.05));">
-            <h2>🚀 The Future of Farming Intelligence</h2>
-            <p>AgriTech is building the next generation of agricultural monitoring — where land is continuously observed, risks are predicted early, and decisions are guided by real data. We are redefining how farmland is measured, monitored, and protected.</p>
+            <h2>Key Capabilities</h2>
+            <p><strong>Multi-API Resilience:</strong> Our system features resilient data fetching with multi-API fallbacks to maximize availability and ensure continuous monitoring even when primary data sources are unavailable. We integrate with NASA satellite providers and multiple weather services to guarantee reliable, uninterrupted farmland intelligence.</p>
+        </section>
+
+        <!-- Team Section -->
+        <section class="features-section">
+            <h2>👥 Our Team</h2>
+            <p style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">Built by Team <strong>FuTech</strong> for the AgentX Hackathon 2026</p>
+            <div class="features-grid" style="grid-template-columns: repeat(4, 1fr);">
+                <div class="feature-card" role="article" aria-label="Vijay Sarathi R.S — Team Lead and Backend Developer">
+                    <div class="feature-icon">👨‍💻</div>
+                    <h3>Vijay Sarathi R.S</h3>
+                    <p>Team Lead & Backend Developer - implemented core backend services and APIs.</p>
+                </div>
+
+                <div class="feature-card" role="article" aria-label="Sanjai S — Backend Support and DevOps">
+                    <div class="feature-icon">👨‍💻</div>
+                    <h3>Sanjai S</h3>
+                    <p>Backend Support & DevOps - CI/CD, Docker, Render deployment, and technical documentation.</p>
+                </div>
+
+                <div class="feature-card" role="article" aria-label="Akhil T.T — Frontend Developer">
+                    <div class="feature-icon">👨‍💻</div>
+                    <h3>Akhil T.T</h3>
+                    <p>Frontend Developer - implemented UI/UX and client-side features.</p>
+                </div>
+
+                <div class="feature-card" role="article" aria-label="Sreevidhya A — AI/ML Specialist">
+                    <div class="feature-icon">👩‍💻</div>
+                    <h3>Sreevidhya A</h3>
+                    <p>AI/ML Specialist - planning, testing, and report generation.</p>
+                </div>
+            </div>
         </section>
 
         <!-- CTA Section -->
@@ -983,7 +1060,7 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p>© 2026 AgriTech. All rights reserved. | Intelligent Farmland Monitoring</p>
+            <p>© 2026 AgriTech. All rights reserved. | Intelligent Farmland Monitoring | <a href="https://agri-ofx9.onrender.com/" style="color: #4ade80; text-decoration: none;">Live Demo</a></p>
         </footer>
     </div>
 
