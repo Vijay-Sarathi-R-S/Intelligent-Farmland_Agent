@@ -32,7 +32,6 @@ Asset intelligence for farmland — combining satellite imagery, weather data, a
 
 **AgriTech - Farmland Intelligence** is an AI-powered web application that provides vegetation analysis (NDVI), weather-driven risk metrics, and automated reports to support risk management, insurance verification, and precision agriculture.
 
-
 ---
 
 ## Table of contents
