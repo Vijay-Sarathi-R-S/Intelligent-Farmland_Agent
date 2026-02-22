@@ -100,7 +100,7 @@ copy .env.example .env
 python app.py
 ```
 
-5. 5. Open http://localhost:5000 — or visit the deployed demo at `https://agri-ofx9.onrender.com/`
+5. Open http://localhost:5000 — or visit the deployed demo at `https://agri-ofx9.onrender.com/`
 
 ---
 
