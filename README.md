@@ -1,11 +1,15 @@
 # Intelligent Farmland Agent (AgriTech)
 
+<div align="center">
+
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 [![codecov](https://codecov.io/gh/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/branch/main/graph/badge.svg)](https://codecov.io/gh/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)
 ![Python](https://img.shields.io/badge/python-3.8%2B-3776AB)
 ![License](https://img.shields.io/badge/License-Creative%20Commons%20Legal%20Code-green)
 ![Hackathon](https://img.shields.io/badge/hackathon-2026-orange)
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen)](https://agri-ofx9.onrender.com/)
+
+</div>
 
 **Live demo**: https://agri-ofx9.onrender.com/
 
