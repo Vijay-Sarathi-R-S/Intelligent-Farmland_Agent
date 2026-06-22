@@ -1,22 +1,32 @@
-name: Manual Deploy to Render
+name: Deploy to Render
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+    branches: [main]
 
 jobs:
   deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy to Render via API
+      - name: Deploy to Render
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
         run: |
+          if [ -z "$RENDER_API_KEY" ] || [ -z "$SERVICE_ID" ]; then
+            echo "Missing RENDER_API_KEY or RENDER_SERVICE_ID secret."
+            exit 1
+          fi
           echo "Triggering Render deployment..."
-          curl -X POST https://api.render.com/deploy/srv/$SERVICE_ID \
+          curl -fsS -X POST "https://api.render.com/deploy/srv/$SERVICE_ID" \
             -H "Accept: application/json" \
             -H "Authorization: Bearer $RENDER_API_KEY"

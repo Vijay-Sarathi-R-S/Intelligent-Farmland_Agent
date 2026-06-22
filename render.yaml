@@ -11,7 +11,9 @@ services:
         value: production
       - key: PYTHONUNBUFFERED
         value: "1"
+      - key: PORT
+        value: "5000"
     autoDeploy: true
     healthCheckPath: /healthz
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn run:app -b 0.0.0.0:5000 --workers 1 --timeout 60
+    buildCommand: python -m pip install -r requirements.txt
+    startCommand: gunicorn run:app -b 0.0.0.0:5000 --workers 1 --threads 4 --timeout 120

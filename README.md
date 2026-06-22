@@ -1,247 +1,132 @@
-# Intelligent Farmland Agent (AgriTech)
+# Intelligent Farmland Agent
 
-<div align="center">
+A Flask-based farmland intelligence platform that combines satellite data, weather analysis, and AI-driven insights to support crop monitoring, risk evaluation, and report generation.
 
-[![Build Status](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/actions/workflows/ci.yml/badge.svg)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/actions)
-[![codecov](https://codecov.io/gh/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/branch/main/graph/badge.svg)](https://codecov.io/gh/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)
-![coverage](https://img.shields.io/badge/coverage-unknown-yellow)
-![Python](https://img.shields.io/badge/python-3.8%2B-3776AB)
-![Flask](https://img.shields.io/badge/Flask-2.x-black?logo=flask)
-![AI: Google Gemini](https://img.shields.io/badge/AI-Google%20Gemini-blue)
-![License](https://img.shields.io/badge/License-Creative%20Commons%20Legal%20Code-green)
-![Hackathon](https://img.shields.io/badge/hackathon-2026-orange)
-[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen)](https://agri-ofx9.onrender.com/)
-[![Last Commit](https://img.shields.io/github/last-commit/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/commits)
-![Repo Size](https://img.shields.io/github/repo-size/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)
-[![Contributors](https://img.shields.io/github/contributors/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/graphs/contributors)
-[![Open PRs](https://img.shields.io/github/issues-pr/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/pulls)
-[![Issues](https://img.shields.io/github/issues/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/issues)
-[![Stars](https://img.shields.io/github/stars/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent?style=social)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/stargazers)
-[![Forks](https://img.shields.io/github/forks/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent?style=social)](https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/network/members)
-[![PyPI](https://img.shields.io/pypi/v/your-package-name)](https://pypi.org/project/your-package-name/) <!-- replace your-package-name -->
-[![Docker Pulls](https://img.shields.io/docker/pulls/YOUR_DOCKER_USERNAME/your-image)](https://hub.docker.com/r/YOUR_DOCKER_USERNAME/your-image) <!-- replace placeholders -->
+![Python](https://img.shields.io/badge/python-3.11%2B-blue)
+![Flask](https://img.shields.io/badge/flask-3.x-black)
 ![Docker](https://img.shields.io/badge/docker-ready-blue)
-![Dependencies](https://img.shields.io/librariesio/release/github/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)
-[![Known Vulnerabilities](https://snyk.io/test/github/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent/badge.svg)](https://snyk.io/test/github/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent)
-
-</div>
-
-**Live demo**: https://agri-ofx9.onrender.com/
-
-Asset intelligence for farmland — combining satellite imagery, weather data, and AI to build auditable, time-anchored records of field activity and risk.
-
-**AgriTech - Farmland Intelligence** is an AI-powered web application that provides vegetation analysis (NDVI), weather-driven risk metrics, and automated reports to support risk management, insurance verification, and precision agriculture.
-
----
-
-## Table of contents
-
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Quick Start](#quick-start)
-- [Configuration](#configuration)
-- [API Endpoints](#api-endpoints)
-- [Services](#services)
-- [AI Integration](#ai-integration)
-- [Dependencies](#dependencies)
-- [Testing](#testing)
-- [Live demo](#live-demo)
-- [Contributing](#contributing)
-- [License](#license)
-- [Troubleshooting & Support](#troubleshooting--support)
-
----
+![Render](https://img.shields.io/badge/render-deploy-ready-green)
 
 ## Overview
 
-This system leverages satellite imagery, weather forecasting, and Google Gemini AI to analyze farmland health, detect anomalies, and produce actionable recommendations and PDF reports.
+This project helps users:
 
-Use cases include crop health monitoring, yield prediction, insurance claim evidence, and regulatory reporting.
+- inspect field conditions using NDVI and weather metrics,
+- review AI-assisted recommendations,
+- generate PDF reports for farm risk assessment,
+- run the application locally or in Docker.
 
----
+## Features
 
-## Key Features
+- Field registration and analysis API
+- NDVI-based vegetation insights
+- Weather-based drought/heat/flood risk scoring
+- PDF report generation
+- Optional AI validation using Gemini when credentials are available
+- Docker and Render deployment support
 
-- **Satellite imagery analysis** — NDVI and vegetation metrics using NASA and other satellite providers.
-- **Weather intelligence** — historical and forecasted weather to compute risk metrics.
-- **AI-powered analysis** — Google Gemini-driven contextual insights and validation.
-- **Automated reports** — PDF generation with charts and summaries for stakeholders.
-- **Field management UI** — simple dashboard to register and analyze fields.
-- **Resilient data fetching** — multi-API fallbacks to maximize availability.
+## Project Structure
 
----
+- [app.py](app.py) — Flask application entry point
+- [run.py](run.py) — WSGI entry point for Gunicorn/Render
+- [config.py](config.py) — environment configuration
+- [services](services) — analysis, weather, satellite, report, and validation logic
+- [templates](templates) — HTML templates
+- [tests](tests) — automated tests
+- [.github/workflows](.github/workflows) — CI/CD workflows
 
 ## Quick Start
 
-1. Create and activate a virtualenv (recommended):
+### 1) Clone and install
 
-```powershell
-python -m venv venv
-venv\Scripts\Activate.ps1   # PowerShell on Windows
-```
-
-2. Install dependencies:
-
-```powershell
+```bash
+git clone https://github.com/Vijay-Sarathi-R-S/Intelligent-Farmland_Agent.git
+cd Intelligent-Farmland_Agent
 python -m pip install --upgrade pip
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+python -m pip install -r requirements-dev.txt
 ```
 
-3. Copy environment template and add keys:
+### 2) Configure environment
 
-```powershell
+Copy the sample environment file and update the values:
+
+```bash
 copy .env.example .env
-# then edit .env and add GEMINI_API_KEY, SECRET_KEY, etc.
 ```
 
-4. Run the app:
+Required variables:
 
-```powershell
-python app.py
+- `SECRET_KEY` — Flask session secret
+- `GEMINI_API_KEY` — optional but recommended for AI summaries
+- `NASA_API_KEY` — optional for improved NASA-based data access
+
+### 3) Run locally
+
+```bash
+python -m flask --app app run --host=0.0.0.0 --port=5000
 ```
 
-5. Open http://localhost:5000 — or visit the deployed demo at `https://agri-ofx9.onrender.com/`
+Or use the WSGI entry point:
 
----
-
-## Configuration
-
-Required environment variables (set in `.env`):
-
-- `GEMINI_API_KEY` — Google Gemini API key (required)
-- `SECRET_KEY` — Flask secret key (required)
-- `NASA_API_KEY` — NASA API key (optional, improves satellite data availability)
-
----
-
-## API Endpoints
-
-- GET `/api/fields` — list all registered fields
-- POST `/api/fields` — create a new field (body: name, latitude, longitude, acres, crop_type)
-- POST `/api/fields/<field_id>/analyze` — run analysis for a field (returns NDVI, weather risks, AI insights)
-
-Request example:
-
-```json
-POST /api/fields
-{
-  "name": "Field A",
-  "latitude": 37.7749,
-  "longitude": -122.4194,
-  "acres": 50,
-  "crop_type": "Corn"
-}
+```bash
+python run.py
 ```
 
-Response example:
+The app will be available at http://localhost:5000.
 
-```json
-{
-  "success": true,
-  "analysis": {
-    "field_id": "abc123",
-    "vegetation_health": "Healthy",
-    "ndvi_value": 0.8,
-    "weather_risks": {},
-    "ai_insights": "Crops appear healthy with good moisture levels...",
-    "timestamp": "2026-02-17T10:30:00"
-  }
-}
+## Docker
+
+Build and run the container:
+
+```bash
+docker compose up --build
 ```
 
----
+For production-style startup:
 
-## Services
+```bash
+docker build -t agritech .
+docker run -p 5000:5000 --env-file .env agritech
+```
 
-- `services/satellite.py` — satellite data retrieval, NDVI calculation, API fallbacks
-- `services/weather.py` — weather collection, risk scoring, forecast/historical support
-- `services/analyzer.py` — combines satellite + weather, calls Gemini for contextual analysis
-- `services/report_generator.py` — creates PDF reports with charts and findings
+## Deployment
 
----
+### Render
 
-## AI Integration
+This repository includes deployment files for Render:
 
-Google Gemini is used to validate inputs, provide contextual insights (cause/effect), and generate human-readable recommendations included in reports.
+- [render.yaml](render.yaml)
+- [Procfile](Procfile)
+- [Dockerfile](Dockerfile)
+- [.github/workflows/render-deploy.yml](.github/workflows/render-deploy.yml)
 
----
+Set these GitHub secrets before enabling the deployment workflow:
 
-## Dependencies
+- `RENDER_API_KEY`
+- `RENDER_SERVICE_ID`
 
-Core packages are listed in `requirements.txt`. Key packages include Flask, numpy, requests, google-generativeai, and reportlab.
+### GitHub Actions
 
----
+CI runs on every push and pull request to validate the codebase, and the deploy workflow can trigger automatically after CI succeeds on `main`.
 
 ## Testing
 
-Run unit tests:
+Run the suite locally:
 
-```powershell
+```bash
 python -m pytest -q
 ```
 
-Or run the provided test runner:
+The tests are designed so that external API-dependent checks are skipped when credentials are not available.
 
-```powershell
-python test.py
-```
+## Documentation
 
----
-
-## Live demo
-
-A deployed version of this app is available at:
-
-https://agri-ofx9.onrender.com/
-
-You can use the live demo to quickly explore the UI without running locally. (Keep in mind the live demo may run with demo data and rate limits.)
-
----
-
-## Contributing
-
-- Fork the repo, create a branch, add tests and features, then open a pull request.
-- Keep changes focused and add tests for new behaviors.
-
----
+- [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+- [docs/RENDER_QUICKSTART.md](docs/RENDER_QUICKSTART.md)
+- [docs/RENDER_FILES_SUMMARY.md](docs/RENDER_FILES_SUMMARY.md)
 
 ## License
 
-Provided as-is for hackathon purposes. Consider adding an explicit license file for broader use (MIT recommended).
+This project is provided for educational and hackathon use. Add a formal license if you intend to distribute it publicly.
 
----
-
-## Troubleshooting & Support
-
-- If satellite or weather data is missing: check API keys, network access, and service availability.
-- If AI responses are unexpected: verify `GEMINI_API_KEY` and review request payloads passed to the AI.
-- For PDF generation issues: ensure `reportlab` is installed and output folders are writable.
-
-If you'd like, I can also:
-
-- add a `.github/workflows` CI stub, or
-- generate a `requirements-dev.txt` with test & lint extras.
-
----
-
-File: [README.md](README.md)
-
-## Hackathon & Team
-
-This project was created for the AgentX Hackathon by Team **FuTech**. Our team members:
-
-```Table
-| Team Member | Role | Service | GitHub |
-|-------------|------|----------|--------|
-| **Vijay Sarathi R.S** | Team Lead & Backend Developer | Implemented core backend services and APIs | [GitHub](https://github.com/Vijay-Sarathi-R-S) |
-| **Sanjai S** | Backend Support & DevOps | CI/CD setup, Docker configuration, Render deployment, and technical documentation | [GitHub](#) |
-| **Akhil T.T** | Frontend Developer | Implemented UI/UX and client-side features | [GitHub](#) |
-| **Sreevidhya A** | AI/ML Specialist | Planning, testing, and report generation | [GitHub](#) |
-```
-
-Good luck and thank you for reviewing our work!
-
-> Made with ❤️ for smarter farming
-
-docker compose up --build -d
-docker compose -f docker-compose.dev.yml up --build

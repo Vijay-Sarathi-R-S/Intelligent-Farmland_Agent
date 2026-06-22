@@ -1,4 +1,8 @@
-import google.generativeai as genai
+try:
+    import google.generativeai as genai
+except ImportError:
+    genai = None
+
 import json
 from datetime import datetime
 from config import Config
@@ -6,16 +10,26 @@ from services.knowledge_base import AgriculturalKnowledgeBase
 
 class AnalyzerService:
     def __init__(self):
+        self.model = None
+        self.ai_available = False
+        self.knowledge_base = AgriculturalKnowledgeBase()
+
+        if genai is None:
+            print("⚠️ Gemini SDK not installed; AI insights will be disabled.")
+            return
+
+        api_key = Config.GEMINI_API_KEY
+        if not api_key:
+            print("⚠️ GEMINI_API_KEY is not set; AI insights will be disabled.")
+            return
+
         try:
-            genai.configure(api_key=Config.GEMINI_API_KEY)
+            genai.configure(api_key=api_key)
             self.model = genai.GenerativeModel('gemini-2.5-flash')
             self.ai_available = True
-            # Initialize RAG knowledge base
-            self.knowledge_base = AgriculturalKnowledgeBase()
             print("🤖 Gemini AI Initialized with RAG Knowledge Base")
         except Exception as e:
             print(f"❌ AI Setup Error: {e}")
-            self.ai_available = False
     
     def analyze_field(self, field_data, vegetation_data, weather_risks):
         """Analyze field using REAL data with RAG validation"""
@@ -319,6 +333,14 @@ Provide a JSON with:
 Return ONLY valid JSON.
 """
         
+        if not self.ai_available or self.model is None:
+            return {
+                'risk_summary': f"Location analysis complete. {analysis['overall_risk']} risk detected.",
+                'key_factors': ['Climate conditions', 'Crop requirements', 'Location factors'],
+                'insurance_tips': ['Review detailed metrics above'],
+                'confidence': 'Medium'
+            }
+
         try:
             response = self.model.generate_content(prompt)
             text = response.text

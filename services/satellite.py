@@ -5,6 +5,16 @@ from PIL import Image
 import io
 from config import Config
 
+_satellite_access_count = 0
+
+
+def increment_satellite_count():
+    """Increment and return the number of satellite API access attempts."""
+    global _satellite_access_count
+    _satellite_access_count += 1
+    return _satellite_access_count
+
+
 class SatelliteService:
     def __init__(self):
         self.nasa_key = Config.NASA_API_KEY
@@ -16,6 +26,7 @@ class SatelliteService:
     
     def get_vegetation_data(self, lat, lon):
         """Get vegetation data from multiple APIs with fallbacks"""
+        increment_satellite_count()
         
         # Try APIs in order of reliability
         apis = [
